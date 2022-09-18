@@ -10,7 +10,7 @@ cmake ..  -DCMAKE_BUILD_TYPE=Release  -DBUILD_SHARED_LIBS=1 -DBUILD_WITH_OPENMP=
 ```
 I found that trying to use ninja rather than Make for the generator fell down at build time for target libcurl
 
-I link to OpenCV but it's a placeholder that may go away.  It's not needed by the three current executables
+There's some placeholder code for linking to OpenCV but it's not used by the three current executables
 - `hello_realsense` (very basic can I build and use the SDK, copied from rs examples)
 - `hello_capture` (nice GL rendering of depth and RGB. also copied from rs examples)
 - `frame_rate` (actually frame time, never divide in a loop)
