@@ -4,9 +4,10 @@
 #include <iostream>
 #include <chrono>
 #include <librealsense2/rs.hpp>
+
 [[noreturn]]
 int main() {
-    std::cout << "Hello, World!\n\n";
+    std::cout << "Time for frame (\u03BCs)\n===================\n";
 
     using Clock = std::chrono::steady_clock;
     using std::chrono::time_point;

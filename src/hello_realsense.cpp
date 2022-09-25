@@ -1,5 +1,6 @@
 #include <iostream>
 #include <librealsense2/rs.hpp>
+
 [[noreturn]]
 int main() {
     std::cout << "Hello, World!\n\n";
@@ -24,10 +25,7 @@ int main() {
 
         // Query the distance from the camera to the object in the center of the image
         float dist_to_center = depth.get_distance(width / 2, height / 2);
-        //auto h = depth.get_height();
-        //auto w = depth.get_width();
         // Print the distance
         std::cout << "The camera is facing an object " << dist_to_center << " meters away \r";
-        //std::cout << "frame size: (" << h << "," << w << ") \r";
     }
 }
