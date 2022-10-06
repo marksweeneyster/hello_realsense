@@ -6,6 +6,7 @@
 #include <opencv2/imgproc.hpp>
 #include <opencv2/highgui.hpp>
 #include "ocv_utils.hpp"
+#include "cvt_utils.hpp"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -15,15 +16,16 @@ float confThreshold = 0.5; // Confidence threshold
 float nmsThreshold = 0.4;  // Non-maximum suppression threshold
 int inpWidth = 416;  // Width of network's input image
 int inpHeight = 416; // Height of network's input image
-std::vector<std::string> classes;
+std::vector<std::string> classes = cvt::CLASS_LABELS;
 
 double SCALE = 1.0/255.0;
 
 // Draw the predicted bounding box
 void drawPred(int classId, float conf, int left, int top, int right, int bottom, cv::Mat& frame)
 {
+    cv::Scalar color = cvt::getColor(classId);
     //Draw a rectangle displaying the bounding box
-    rectangle(frame, cv::Point(left, top), cv::Point(right, bottom), cv::Scalar(255, 178, 50), 3);
+    rectangle(frame, cv::Point(left, top), cv::Point(right, bottom), color, 3);
 
     //Get the label for the class name and its confidence
     std::string label = cv::format("%.2f", conf);
