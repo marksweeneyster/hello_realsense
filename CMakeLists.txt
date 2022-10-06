@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 message(STATUS "RealSense dir: ${REALSENSE_DIR}")
 message(STATUS "OpenCV dir: ${OCV_DIR}")
 
+find_package( OpenCV REQUIRED)
 #############
 
 add_executable(frame_time src/frame_time.cpp)
@@ -52,4 +53,23 @@ target_link_options(capture PUBLIC
 target_link_libraries(capture PUBLIC
         realsense2
         glfw GL GLU
+        )
+
+#############
+
+add_executable(ocv_capture src/ocv_capture.cpp)
+
+target_include_directories(ocv_capture PUBLIC
+        ${REALSENSE_DIR}/include
+        ocv_utilities
+        )
+target_link_directories(ocv_capture PUBLIC
+        ${REALSENSE_DIR}/lib
+        )
+target_link_options(ocv_capture PUBLIC
+        -Wl,-rpath=${REALSENSE_DIR}/lib
+        )
+target_link_libraries(ocv_capture PUBLIC
+        realsense2
+        ${OpenCV_LIBS}
         )
